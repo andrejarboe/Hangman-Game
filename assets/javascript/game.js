@@ -35,6 +35,18 @@ for (i = 0; i < word.lenght; i++) {
 
 }
 
-$( document ).ready(function() {
-    
+$(document).ready(function () {
+
+
+    function addDashes() {
+        for (i = 0; i < word.length; i++) {
+            $("#word").append("<strong>_</strong>");
+        }
+    }
+
+    console.log("The word is: " + word);
+
+    addDashes();
+
+
 });
