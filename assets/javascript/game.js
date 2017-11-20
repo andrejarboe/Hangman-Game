@@ -1,9 +1,8 @@
 // Coose a theme
-word = "apple";
 // use key event to listen for letters a player might type
 // use onkeyup event listening
 
-//create loop for arry
+// create loop for arry
 // compare array to letter guessed
 
 // press any key to get started
@@ -29,24 +28,71 @@ var playerWins = function () {
 // use .lenght to check the lenght of the word
 // create a for loop that puts as many dashes as there are letters
 
-for (i = 0; i < word.lenght; i++) {
+for (i = 0; i < word.length; i++) {
     $("#word-one").append("<span>_</span>");
     // append a new ____space everytime the loop runs
 
 }
 
 $(document).ready(function () {
+    var word = "apple pie";
+    var placeholder = [];
 
-
+    // add dashes to the screen
     function addDashes() {
         for (i = 0; i < word.length; i++) {
             $("#word").append("<strong>_</strong>");
         }
     }
 
-    console.log("The word is: " + word);
+    //check letter
+    function checkLetter(word, letter) {
+        console.log("word arr is: " + word.split(""));
+        // use charAt to check letters
+        for (i = 0; i < word.length; i++) {
+            if (word.charAt(i) === letter) {
+                // console.log("letter matches!!!!!");
+                placeholder[i] = letter;
+                // console.log(placeholder);
+            } else {
+                // console.log("letter does not match");
+                // console.log(placeholder);
+            }
+        }
+        console.log(placeholder);        
+    }
 
+    //make placeholder arr
+    //hold word
+    function wordHolder(word) {
+        for(i=0; i< word.length; i++){
+            placeholder.push("_");
+        }
+
+        console.log("placeholder arr: "+placeholder);
+    }
+
+    wordHolder(word);
+
+    //listen for user key press
+    $(document).on("keyup", function (event) {
+        if (event.which >= 65 && event.which <= 90) {
+            console.log(event.key);
+            checkLetter(word, event.key);
+        }
+
+    });
+
+    console.log("The word is: " + word);
+    console.log("the lenght of the word is: " + word.length);
     addDashes();
 
 
+
 });
+
+
+// listen for letters
+// make word an array
+// make place holder as long as wordArray
+// compare guess to wordArry and add correct letters to placeholder
