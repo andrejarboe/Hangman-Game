@@ -24,7 +24,8 @@
 
 
 $(document).ready(function () {
-    var word = "pie";
+    var wordList = ["apple pie", "peach pie", "cherry pie"];
+    var word;
     var placeholder = [];
 
     // log wins
@@ -35,10 +36,26 @@ $(document).ready(function () {
     var playerWins = function () {
         wins++;
         console.log("you won " + wins + " time(s)!");
+        resetGame();
+    }
+
+    //select random word
+    function randomWord() {
+        var num = Math.floor(Math.random() * wordList.length)
+        var word = wordList[num];
+        // word = wordList[1];
+        console.log("random word is: " + word);
+        console.log("random num is: " + num);
+
+        addDashes(word);
+        wordHolder(word);
+        keypress();
+
+
     }
 
     // add dashes to the screen
-    function addDashes() {
+    function addDashes(word) {
         for (i = 0; i < word.length; i++) {
             // append a new ____space everytime the loop runs
 
@@ -46,9 +63,19 @@ $(document).ready(function () {
         }
     }
 
+    //reset game
+    function resetGame() {
+        //set place holder to empty arr
+        randomWord();
+        wordHolder();
+        console.log("New game: " + placeholder);
+    }
+
+
+
     //check letter
     function checkLetter(word, letter) {
-        console.log("word arr is: " + word.split(""));
+        // console.log("word arr is: " + word.split(""));
         // use charAt to check letters
         for (i = 0; i < word.length; i++) {
             if (word.charAt(i) === letter) {
@@ -72,7 +99,7 @@ $(document).ready(function () {
 
         console.log("placeholder arr: " + placeholder);
         console.log("placeholder typeof: " + typeof placeholder);
-        
+
 
     }
 
@@ -93,24 +120,24 @@ $(document).ready(function () {
         }
     }
 
-    wordHolder(word);
 
     //listen for user key press
-    $(document).on("keyup", function (event) {
-        if (event.which >= 65 && event.which <= 90) {
-            console.log(event.key);
-            checkLetter(word, event.key);
-            checkWin(placeholder, word);
-            console.log("placeholder is: " + placeholder);
-            console.log("word is: " + word.split(""));
+    function keypress() {
+        $(document).on("keyup", function (event) {
+            if (event.which >= 65 && event.which <= 90) {
+                console.log(event.key);
+                checkLetter(word, event.key);
+                checkWin(placeholder, word);
+                console.log("placeholder is: " + placeholder);
+                console.log("word is: " + word.split(""));
 
-        }
+            }
 
-    });
+        });
+    }
 
+    randomWord();
     console.log("The word is: " + word);
-    console.log("the lenght of the word is: " + word.length);
-    addDashes();
 
 });
 
