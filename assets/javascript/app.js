@@ -6,9 +6,9 @@
 $(document).ready(function () {
     /* Global variables 
      ******************************************/
-    var wordList = ["apple_pie", "peach_pie", "cherry_pie"];
+    var wordList = ["apple", "peach", "cherry", "banana", "orange"];
     var wins = 0;
-    var placeholder =[];
+    var placeholder;
 
     /* Functions
      ********************************************************/
