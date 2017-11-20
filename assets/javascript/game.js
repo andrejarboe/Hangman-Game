@@ -7,14 +7,8 @@
 
 // press any key to get started
 
-// log wins
-// create var wins 
-// set wins to 0
-var wins = 0;
-// if player wins increment by 1
-var playerWins = function () {
-    wins++;
-}
+
+
 
 // number of guesses for user
 // create a var for guessses
@@ -28,19 +22,26 @@ var playerWins = function () {
 // use .lenght to check the lenght of the word
 // create a for loop that puts as many dashes as there are letters
 
-for (i = 0; i < word.length; i++) {
-    $("#word-one").append("<span>_</span>");
-    // append a new ____space everytime the loop runs
-
-}
 
 $(document).ready(function () {
-    var word = "apple pie";
+    var word = "pie";
     var placeholder = [];
+
+    // log wins
+    // create var wins 
+    // set wins to 0
+    var wins = 0;
+    // if player wins increment by 1
+    var playerWins = function () {
+        wins++;
+        console.log("you won " + wins + " time(s)!");
+    }
 
     // add dashes to the screen
     function addDashes() {
         for (i = 0; i < word.length; i++) {
+            // append a new ____space everytime the loop runs
+
             $("#word").append("<strong>_</strong>");
         }
     }
@@ -59,17 +60,37 @@ $(document).ready(function () {
                 // console.log(placeholder);
             }
         }
-        console.log(placeholder);        
+        console.log(placeholder);
     }
 
     //make placeholder arr
     //hold word
     function wordHolder(word) {
-        for(i=0; i< word.length; i++){
-            placeholder.push("_");
+        for (i = 0; i < word.length; i++) {
+            placeholder.push(" ");
         }
 
-        console.log("placeholder arr: "+placeholder);
+        console.log("placeholder arr: " + placeholder);
+        console.log("placeholder typeof: " + typeof placeholder);
+        
+
+    }
+
+    //compare place holder to word
+    function checkWin(userWord, theWord) {
+        theWord = word.split("");
+
+        console.log("checking wins");
+        console.log("placeholder is: " + placeholder);
+        console.log("typeof is: " + typeof placeholder);
+        console.log("word is: " + word.split(""));
+        console.log("typeof is: " + word.split(""));
+
+        if (userWord.join("") === theWord.join("")) {
+            playerWins();
+        } else {
+            console.log("did not win");
+        }
     }
 
     wordHolder(word);
@@ -79,6 +100,10 @@ $(document).ready(function () {
         if (event.which >= 65 && event.which <= 90) {
             console.log(event.key);
             checkLetter(word, event.key);
+            checkWin(placeholder, word);
+            console.log("placeholder is: " + placeholder);
+            console.log("word is: " + word.split(""));
+
         }
 
     });
@@ -87,12 +112,10 @@ $(document).ready(function () {
     console.log("the lenght of the word is: " + word.length);
     addDashes();
 
-
-
 });
 
 
 // listen for letters
 // make word an array
-// make place holder as long as wordArray
+// make place holder array as long as wordArray
 // compare guess to wordArry and add correct letters to placeholder
