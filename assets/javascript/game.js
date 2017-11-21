@@ -41,7 +41,7 @@ $(document).ready(function () {
 
     //select random word
     function randomWord() {
-        var num = Math.floor(Math.random() * wordList.length)
+        var num = Math.floor(Math.random() * wordList.length);
         var word = wordList[num];
         // word = wordList[1];
         console.log("random word is: " + word);
