@@ -46,7 +46,7 @@ $(document).ready(function () {
                 console.log("word is: " + word.split(""));
                 var letter = event.key;
                 compareLetters(word, letter, placeholder);
-                checkWin(word);
+                checkWin(word, letter);
             }
 
         });
@@ -58,23 +58,22 @@ $(document).ready(function () {
             if (word.charAt(i) === letter) {
                 placeholder[i] = letter;
                 $("#word").html(placeholder.join(" "));
-            } else {
-                $("#gussed").append(letter);
-            }
+            } 
         }
 
         console.log(placeholder);
     }
 
     //chcek wins
-    function checkWin(word) {
+    function checkWin(word, letter) {
         if (placeholder.join("") === word.split("").join("")) {
             wins++;
             console.log("you win " + wins + " time(s)!!!");
             $("#wins").html('<h2>Wins: ' + wins + '</h2>');
             console.log("Placeholder[] is: " + placeholder);
             newGame();
-        } else {
+        } else if(word.indexOf(letter) === -1){
+            $("#gussed").append(letter);            
             console.log("did not win.");
         }
     }
@@ -88,6 +87,7 @@ $(document).ready(function () {
 
     }
 
+    // start new game and reet values
     function newGame() {
         $("#gussed").text("");
         placeholder = [];
