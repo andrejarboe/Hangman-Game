@@ -12,6 +12,7 @@ $(document).ready(function () {
     ];
     var index = Math.floor(Math.random() * wordList.length);
     var wins = 0;
+    var guesses = 12;
     var placeholder = [];
 
 
@@ -73,8 +74,15 @@ $(document).ready(function () {
             console.log("Placeholder[] is: " + placeholder);
             newGame();
         } else if(word.indexOf(letter) === -1){
-            $("#gussed").append(letter);            
+            $("#guessed").append(letter);
+            guesses--;
+            $("#gusses").html('<h2>Gusses left: ' + guesses + '</h2>');
+            console.log("G "+guesses);            
             console.log("did not win.");
+            if(guesses === 0){
+                newGame();
+                console.log("newgame!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            }
         }
     }
 
@@ -83,18 +91,16 @@ $(document).ready(function () {
             // append a new ____space everytime the loop runs
             $("#word").html("<span>" + placeholder.join(" ") + "</sapan>");
         }
-
-
     }
 
     // start new game and reet values
     function newGame() {
-        $("#gussed").text("");
+        $("#guessed").text("");
         placeholder = [];
-        index = Math.floor(Math.random() * wordList.length);
-
+        index = Math.round(Math.random() * wordList.length);
+        guesses = 12;
+        $("#gusses").html('<h2>Gusses left: 12</h2>');                    
         randomWord(placeholder);
-
     }
 
 
