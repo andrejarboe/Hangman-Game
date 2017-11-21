@@ -8,7 +8,8 @@
     <title>Hangman Game</title>
 
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./assets/css/style.css" /> -->
 
 </head>
 
@@ -16,14 +17,30 @@
     <!-- Title/ nav -->
     <nav>
         <div class="container">
-            <h1>Hangman</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Hangman Pies!!!!</h1>
+                </div>
+            </div>
         </div>
     </nav>
 
     <section class="game">
-        <div id="word"></div>
-        <div id="wins"><h2>Wins: 0</h2></div>
-        <div id="gussed"></div>
+        <div class="container">
+            <div class="row">
+                <div id="picture" class="col-md-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Chicken_Pie.JPG/438px-Chicken_Pie.JPG" 
+                    alt="pie" class="img-responsive"/>
+                </div>
+                <div class="col-md-6">
+                    <div id="word"></div>
+                    <div id="wins">
+                        <h2>Wins: 0</h2>
+                    </div>
+                    <div id="gussed"></div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
@@ -33,5 +50,5 @@
     </script>
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
 </body>
-    
+
 </html>
