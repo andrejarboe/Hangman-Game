@@ -6,26 +6,33 @@
 $(document).ready(function () {
     /* Global variables 
      ******************************************/
-    var wordList = ["apple", "peach", "cherry", "banana", "orange"];
+    var wordList = [
+        "apple", "peach", "cherry", "banana", "pumkin",
+        "chess", "blackberry", "mince", "rhubarb", "buttermilk"
+    ];
+    var index = Math.floor(Math.random() * wordList.length);
     var wins = 0;
-    var placeholder;
+    var placeholder = [];
+
+
 
     /* Functions
      ********************************************************/
-    function randomWord() {
-        var index = Math.floor(Math.random() * wordList.length);
+    function randomWord(placeholder) {
         var word = wordList[index];
-        
-        placeholder = [];
-
         console.log(word);
+        console.log("placeholder=[] is: " + placeholder);
+
         makePlaceholder(word, placeholder);
-        createDashes(word);        
+        console.log("placeholder is: " + placeholder);
+        console.log("word is: " + word);
+        createDashes(word, placeholder);
         keyPress(word, placeholder);
     }
 
     //make placeholder arr in th background
-    function makePlaceholder(word, placeholder){
+    function makePlaceholder(word, placeholder) {
+        console.log("makePlaceholder: " + placeholder);
         for (i = 0; i < word.length; i++) {
             placeholder.push("_");
         }
@@ -39,7 +46,7 @@ $(document).ready(function () {
                 console.log("word is: " + word.split(""));
                 var letter = event.key;
                 compareLetters(word, letter, placeholder);
-                checkWin(word, placeholder);
+                checkWin(word);
             }
 
         });
@@ -47,45 +54,52 @@ $(document).ready(function () {
 
     //compare keypress to word
     function compareLetters(word, letter, placeholder) {
-        var screen;
         for (i = 0; i < word.length; i++) {
             if (word.charAt(i) === letter) {
                 placeholder[i] = letter;
                 $("#word").html(placeholder.join(" "));
-                console.log("letter matches!!!!!");                
-            } 
+            } else {
+                $("#gussed").append(letter);
+            }
         }
 
         console.log(placeholder);
     }
 
     //chcek wins
-    function checkWin(word, placeholder){
-        if(placeholder.join("") === word.split("").join("")){
+    function checkWin(word) {
+        if (placeholder.join("") === word.split("").join("")) {
             wins++;
-            console.log("you win " +wins+ " time(s)!!!");            
-            $("#wins").html('<h2>Wins: '+wins+'</h2>');
-            placeholder = [];
-            resetGame(placeholder);
-        }else{
+            console.log("you win " + wins + " time(s)!!!");
+            $("#wins").html('<h2>Wins: ' + wins + '</h2>');
+            console.log("Placeholder[] is: " + placeholder);
+            newGame();
+        } else {
             console.log("did not win.");
         }
     }
 
-    function createDashes(word){
+    function createDashes(word, placeholder) {
         for (i = 0; i < word.length; i++) {
             // append a new ____space everytime the loop runs
-            $("#word").html("<span>" +placeholder.join(" ")+ "</sapan>");
+            $("#word").html("<span>" + placeholder.join(" ") + "</sapan>");
         }
+
+
     }
 
-    function resetGame(placeholder){
+    function newGame() {
+        $("#gussed").text("");
+        placeholder = [];
+        index = Math.floor(Math.random() * wordList.length);
+
         randomWord(placeholder);
+
     }
+
 
 
     /* Running code
      *****************************************************************/
-    randomWord(placeholder);
-
+    newGame();
 });
