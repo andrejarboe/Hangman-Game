@@ -1,7 +1,7 @@
 // listen for letters
 // make word an array
 // make place holder array as long as wordArray
-// compare guess to wordArry and add correct letters to placeholder
+// compare guess to word Arry and add correct letters to placeholder
 
 $(document).ready(function () {
     /* Global variables 
