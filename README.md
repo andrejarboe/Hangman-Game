@@ -3,11 +3,11 @@ Built with HTML, CSS, and Bootstrap 3
 
 To view it live, **[click here](https://andrejarboe.github.io/Hangman-Game/)**
 
-This repo is a basic hanngman game made in HTML, CSS, Bootstrap, and jQuery. I was able to make this website after 2 weeks of training at the Georgia Tech Coding Bootcamp. 
+This repo is a basic hangman game made in HTML, CSS, Bootstrap, and jQuery. I was able to make this website after 2 weeks of training at the Georgia Tech Coding Bootcamp. 
 
 ## Authors
 
-* **Andre' jarboe II** - *Initial work* - [AndreJarboe](https://github.com/andrejarboe)
+* **Andre' Jarboe II** - *Initial work* - [AndreJarboe](https://github.com/andrejarboe)
 
 ## License
 
